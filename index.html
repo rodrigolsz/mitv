@@ -22,10 +22,20 @@
     </style>
 </head>
 <body>
-    <iframe allowfullscreen="true" scrolling="no" 
+    <iframe id="miIframe" allowfullscreen="true" scrolling="no" 
         src="https://dtvlivegratis.com/stream4.php?channel=tntar" 
         allow="encrypted-media" 
         frameborder="0">
     </iframe>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let iframe = document.getElementById("miIframe");
+            iframe.addEventListener("click", function(event) {
+                event.stopPropagation(); // Bloquea el evento de clic antes de que se active la publicidad
+                event.preventDefault();
+            }, true);
+        });
+    </script>
 </body>
 </html>
