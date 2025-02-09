@@ -29,13 +29,16 @@
     </iframe>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let iframe = document.getElementById("miIframe");
-            iframe.addEventListener("click", function(event) {
-                event.stopPropagation(); // Bloquea el evento de clic antes de que se active la publicidad
+        // Bloquear la apertura de nuevas ventanas emergentes
+        window.open = function() {};
+
+        // Interceptar eventos de clic en el iframe
+        document.addEventListener('click', function(event) {
+            if (event.target.tagName === 'IFRAME') {
+                event.stopPropagation(); // Detiene el evento antes de que se active la publicidad
                 event.preventDefault();
-            }, true);
-        });
+            }
+        }, true);
     </script>
 </body>
 </html>
